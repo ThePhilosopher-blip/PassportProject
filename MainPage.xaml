@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassportMD.MainPage"
+             Title="PassportMD"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <Label x:Name="TitleLabel"
+                   Text="PassportMD"
+                   FontSize="36"
+                   FontAttributes="Bold"
+                   TextColor="#e94560"
+                   HorizontalOptions="Center"
+                   Opacity="0" />
+
+            <Label x:Name="SubtitleLabel"
+                   Text="Your Personal Health Tracker"
+                   FontSize="16"
+                   TextColor="#555555"
+                   HorizontalOptions="Center"
+                   Opacity="0" />
+
+            <BoxView HeightRequest="1" Color="#dddddd" Margin="0,10" />
+
+            <Frame x:Name="StatusCard" BackgroundColor="#f5f5f5" CornerRadius="12" Padding="18" BorderColor="Transparent" Opacity="0">
+                <VerticalStackLayout Spacing="4">
+                    <Label x:Name="StatusTitle"
+                           Text="Welcome"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="#0f3460"
+                           HorizontalOptions="Center" />
+                    <Label x:Name="StatusDetail"
+                           Text="Create a profile to get started."
+                           FontSize="14"
+                           TextColor="#555555"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button x:Name="CreateProfileBtn"
+                    Text="Create Profile"
+                    BackgroundColor="#e94560"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnCreateProfileClicked"
+                    Opacity="0" />
+
+            <Button x:Name="EnterVitalsBtn"
+                    Text="Enter Vitals"
+                    BackgroundColor="#0f3460"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnEnterVitalsClicked"
+                    Opacity="0" />
+
+            <Button x:Name="ViewSummaryBtn"
+                    Text="View Summary"
+                    BackgroundColor="#0f3460"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnViewSummaryClicked"
+                    Opacity="0" />
+
+            <Button x:Name="UpdateWeightBtn"
+                    Text="Update Weight"
+                    BackgroundColor="#0f3460"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnUpdateWeightClicked"
+                    Opacity="0" />
+
+            <BoxView HeightRequest="1" Color="#dddddd" Margin="0,5" />
+
+            <Button x:Name="SaveBtn"
+                    Text="Save Passport"
+                    BackgroundColor="#2e8b57"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnSaveClicked"
+                    Opacity="0" />
+
+            <Button x:Name="LoadBtn"
+                    Text="Load Passport"
+                    BackgroundColor="#2e8b57"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnLoadClicked"
+                    Opacity="0" />
+
+            <Button x:Name="ClearBtn"
+                    Text="Clear Passport"
+                    BackgroundColor="#533a71"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnClearPassportClicked"
+                    Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

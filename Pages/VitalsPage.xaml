@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassportMD.Pages.VitalsPage"
+             Title="Enter Vitals"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="18">
+
+            <Label Text="Enter Vitals"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#e94560"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Systolic (top number)" TextColor="#555555" FontSize="14" />
+            <Entry x:Name="SystolicEntry"
+                   Placeholder="e.g. 120"
+                   PlaceholderColor="#999999"
+                   TextColor="#333333"
+                   BackgroundColor="#f0f0f0"
+                   Keyboard="Numeric"
+                   FontSize="16" />
+
+            <Label Text="Diastolic (bottom number)" TextColor="#555555" FontSize="14" />
+            <Entry x:Name="DiastolicEntry"
+                   Placeholder="e.g. 80"
+                   PlaceholderColor="#999999"
+                   TextColor="#333333"
+                   BackgroundColor="#f0f0f0"
+                   Keyboard="Numeric"
+                   FontSize="16" />
+
+            <Label Text="Resting Heart Rate (bpm)" TextColor="#555555" FontSize="14" />
+            <Entry x:Name="HeartRateEntry"
+                   Placeholder="e.g. 72"
+                   PlaceholderColor="#999999"
+                   TextColor="#333333"
+                   BackgroundColor="#f0f0f0"
+                   Keyboard="Numeric"
+                   FontSize="16" />
+
+            <Button Text="Save Vitals"
+                    BackgroundColor="#e94560"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Margin="0,10,0,0"
+                    Clicked="OnSaveClicked" />
+
+            <Button Text="Back to Menu"
+                    BackgroundColor="#0f3460"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnBackClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

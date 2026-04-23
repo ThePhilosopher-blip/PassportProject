@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassportMD.Pages.CreateProfilePage"
+             Title="Create Profile"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="18">
+
+            <Label Text="Create Profile"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#e94560"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Name" TextColor="#555555" FontSize="14" />
+            <Entry x:Name="NameEntry"
+                   Placeholder="Enter your name"
+                   PlaceholderColor="#999999"
+                   TextColor="#333333"
+                   BackgroundColor="#f0f0f0"
+                   FontSize="16" />
+
+            <Label Text="Age" TextColor="#555555" FontSize="14" />
+            <Entry x:Name="AgeEntry"
+                   Placeholder="Enter your age"
+                   PlaceholderColor="#999999"
+                   TextColor="#333333"
+                   BackgroundColor="#f0f0f0"
+                   Keyboard="Numeric"
+                   FontSize="16" />
+
+            <Label Text="Height (inches)" TextColor="#555555" FontSize="14" />
+            <Entry x:Name="HeightEntry"
+                   Placeholder="Enter your height in inches"
+                   PlaceholderColor="#999999"
+                   TextColor="#333333"
+                   BackgroundColor="#f0f0f0"
+                   Keyboard="Numeric"
+                   FontSize="16" />
+
+            <Label Text="Weight (pounds)" TextColor="#555555" FontSize="14" />
+            <Entry x:Name="WeightEntry"
+                   Placeholder="Enter your weight in pounds"
+                   PlaceholderColor="#999999"
+                   TextColor="#333333"
+                   BackgroundColor="#f0f0f0"
+                   Keyboard="Numeric"
+                   FontSize="16" />
+
+            <Button Text="Save Profile"
+                    BackgroundColor="#e94560"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Margin="0,10,0,0"
+                    Clicked="OnSaveClicked" />
+
+            <Button Text="Back to Menu"
+                    BackgroundColor="#0f3460"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnBackClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

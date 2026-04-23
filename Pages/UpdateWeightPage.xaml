@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassportMD.Pages.UpdateWeightPage"
+             Title="Update Weight"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="18">
+
+            <Label Text="Update Weight"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#e94560"
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="CurrentWeightLabel"
+                   FontSize="16"
+                   TextColor="#555555"
+                   HorizontalOptions="Center" />
+
+            <Label Text="New Weight (pounds)" TextColor="#555555" FontSize="14" />
+            <Entry x:Name="WeightEntry"
+                   Placeholder="Enter new weight in pounds"
+                   PlaceholderColor="#999999"
+                   TextColor="#333333"
+                   BackgroundColor="#f0f0f0"
+                   Keyboard="Numeric"
+                   FontSize="16" />
+
+            <Button Text="Update"
+                    BackgroundColor="#e94560"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Margin="0,10,0,0"
+                    Clicked="OnUpdateClicked" />
+
+            <Button Text="Back to Menu"
+                    BackgroundColor="#0f3460"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Clicked="OnBackClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

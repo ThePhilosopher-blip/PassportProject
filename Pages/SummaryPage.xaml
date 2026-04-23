@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PassportMD.Pages.SummaryPage"
+             Title="Health Summary"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="12">
+
+            <Label x:Name="PageTitle"
+                   Text="Health Summary"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#e94560"
+                   HorizontalOptions="Center"
+                   Opacity="0" />
+
+            <BoxView HeightRequest="1" Color="#dddddd" Margin="0,5" />
+
+            <!-- Profile Section -->
+            <Frame x:Name="ProfileFrame" BackgroundColor="#f5f5f5" CornerRadius="12" Padding="18" BorderColor="Transparent" Opacity="0">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Profile" FontSize="18" FontAttributes="Bold" TextColor="#e94560" />
+                    <Label x:Name="NameLabel" TextColor="#333333" FontSize="15" />
+                    <Label x:Name="AgeLabel" TextColor="#333333" FontSize="15" />
+                    <Label x:Name="HeightLabel" TextColor="#333333" FontSize="15" />
+                    <Label x:Name="WeightLabel" TextColor="#333333" FontSize="15" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- BMI Section -->
+            <Frame x:Name="BmiFrame" BackgroundColor="#f5f5f5" CornerRadius="12" Padding="18" BorderColor="Transparent" Opacity="0">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="BMI" FontSize="18" FontAttributes="Bold" TextColor="#e94560" />
+                    <Label x:Name="BmiLabel" TextColor="#333333" FontSize="15" />
+                    <Label x:Name="BmiCategoryLabel" TextColor="#333333" FontSize="15" FontAttributes="Bold" />
+                    <Label x:Name="BmiTipLabel" TextColor="#777777" FontSize="13" FontAttributes="Italic" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Blood Pressure Section -->
+            <Frame x:Name="BpFrame" BackgroundColor="#f5f5f5" CornerRadius="12" Padding="18" BorderColor="Transparent" Opacity="0">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Blood Pressure" FontSize="18" FontAttributes="Bold" TextColor="#e94560" />
+                    <Label x:Name="BpLabel" TextColor="#333333" FontSize="15" />
+                    <Label x:Name="BpCategoryLabel" TextColor="#333333" FontSize="15" FontAttributes="Bold" />
+                    <Label x:Name="BpTipLabel" TextColor="#777777" FontSize="13" FontAttributes="Italic" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Heart Rate Section -->
+            <Frame x:Name="HrFrame" BackgroundColor="#f5f5f5" CornerRadius="12" Padding="18" BorderColor="Transparent" Opacity="0">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Heart Rate" FontSize="18" FontAttributes="Bold" TextColor="#e94560" />
+                    <Label x:Name="HrLabel" TextColor="#333333" FontSize="15" />
+                    <Label x:Name="HrCategoryLabel" TextColor="#333333" FontSize="15" FontAttributes="Bold" />
+                    <Label x:Name="HrTipLabel" TextColor="#777777" FontSize="13" FontAttributes="Italic" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Health Flags Section -->
+            <Frame x:Name="FlagsFrame" BackgroundColor="#f5f5f5" CornerRadius="12" Padding="18" BorderColor="Transparent" Opacity="0">
+                <VerticalStackLayout Spacing="6">
+                    <Label x:Name="FlagsTitle" FontSize="18" FontAttributes="Bold" TextColor="#e94560" />
+                    <Label x:Name="FlagsLabel" TextColor="#333333" FontSize="14" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button x:Name="BackBtn"
+                    Text="Back to Menu"
+                    BackgroundColor="#0f3460"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HeightRequest="55"
+                    Margin="0,10,0,0"
+                    Clicked="OnBackClicked"
+                    Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
