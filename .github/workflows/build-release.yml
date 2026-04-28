@@ -20,9 +20,6 @@ jobs:
       - name: Install MAUI workload
         run: dotnet workload install maui
 
-      - name: Restore
-        run: dotnet restore
-
       - name: Publish Windows
         run: >
           dotnet publish
@@ -31,8 +28,7 @@ jobs:
           --self-contained
           -p:PublishTrimmed=true
           -p:WindowsPackageType=None
-          -p:RuntimeIdentifier=win10-x64
-          -o ./publish-win
+          -o publish-win
 
       - name: Zip Windows build
         run: Compress-Archive -Path ./publish-win/* -DestinationPath PassportMD-Windows.zip
@@ -56,9 +52,6 @@ jobs:
       - name: Install MAUI workload
         run: dotnet workload install maui
 
-      - name: Restore
-        run: dotnet restore
-
       - name: Publish macOS
         run: >
           dotnet publish
@@ -67,12 +60,21 @@ jobs:
           --self-contained
           -p:PublishTrimmed=true
           -p:CreatePackage=false
-          -o ./publish-mac
 
-      - name: Zip macOS build
+      - name: Find and zip macOS build
         run: |
-          cd publish-mac
-          zip -r ../PassportMD-macOS.zip .
+          APP_PATH=$(find . -name "*.app" -path "*/publish/*" -type d | head -1)
+          if [ -z "$APP_PATH" ]; then
+            APP_PATH=$(find ./bin -name "*.app" -type d | head -1)
+          fi
+          if [ -z "$APP_PATH" ]; then
+            echo "Could not find .app bundle. Listing bin contents:"
+            find ./bin -type f | head -30
+            exit 1
+          fi
+          echo "Found app at: $APP_PATH"
+          cd "$(dirname "$APP_PATH")"
+          zip -r "$GITHUB_WORKSPACE/PassportMD-macOS.zip" "$(basename "$APP_PATH")"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
