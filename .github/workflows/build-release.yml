@@ -18,7 +18,10 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Install MAUI workload
-        run: dotnet workload install maui-windows
+        run: dotnet workload install maui
+
+      - name: Restore
+        run: dotnet restore
 
       - name: Publish Windows
         run: >
@@ -28,6 +31,7 @@ jobs:
           --self-contained
           -p:PublishTrimmed=true
           -p:WindowsPackageType=None
+          -p:RuntimeIdentifier=win10-x64
           -o ./publish-win
 
       - name: Zip Windows build
@@ -40,7 +44,7 @@ jobs:
           path: PassportMD-Windows.zip
 
   build-mac:
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
 
@@ -51,6 +55,9 @@ jobs:
 
       - name: Install MAUI workload
         run: dotnet workload install maui
+
+      - name: Restore
+        run: dotnet restore
 
       - name: Publish macOS
         run: >
