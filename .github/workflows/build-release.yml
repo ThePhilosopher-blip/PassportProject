@@ -17,6 +17,9 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Pin SDK to .NET 8
+        run: echo '{"sdk":{"version":"8.0.400","rollForward":"latestFeature"}}' > global.json
+
       - name: Install MAUI workload
         run: dotnet workload install maui
 
@@ -48,6 +51,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+
+      - name: Pin SDK to .NET 8
+        run: echo '{"sdk":{"version":"8.0.400","rollForward":"latestFeature"}}' > global.json
 
       - name: Install MAUI workload
         run: dotnet workload install maui
