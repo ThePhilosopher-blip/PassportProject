@@ -1,0 +1,106 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install MAUI workload
+        run: dotnet workload install maui-windows
+
+      - name: Publish Windows
+        run: >
+          dotnet publish
+          -f net8.0-windows10.0.19041.0
+          -c Release
+          --self-contained
+          -p:PublishTrimmed=true
+          -p:WindowsPackageType=None
+          -o ./publish-win
+
+      - name: Zip Windows build
+        run: Compress-Archive -Path ./publish-win/* -DestinationPath PassportMD-Windows.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PassportMD-Windows
+          path: PassportMD-Windows.zip
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install MAUI workload
+        run: dotnet workload install maui
+
+      - name: Publish macOS
+        run: >
+          dotnet publish
+          -f net8.0-maccatalyst
+          -c Release
+          --self-contained
+          -p:PublishTrimmed=true
+          -p:CreatePackage=false
+          -o ./publish-mac
+
+      - name: Zip macOS build
+        run: |
+          cd publish-mac
+          zip -r ../PassportMD-macOS.zip .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PassportMD-macOS
+          path: PassportMD-macOS.zip
+
+  release:
+    needs: [build-windows, build-mac]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    steps:
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: PassportMD-Windows
+
+      - name: Download macOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: PassportMD-macOS
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            PassportMD-Windows.zip
+            PassportMD-macOS.zip
+          body: |
+            ## PassportMD
+
+            Download the zip for your platform:
+            - **Windows** — Extract and run `PassportMD.exe`
+            - **macOS** — Extract and open `PassportMD.app`
+
+            No .NET installation required — everything is bundled.
